@@ -21,6 +21,7 @@ exports.create = (req, res) => {
     descripcion: req.body.descripcion,
     precio: req.body.precio,
     idCategory: req.body.idCategory,
+    cantidad: req.body.cantidad,
     id: req.body.id
   };
 

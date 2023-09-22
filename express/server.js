@@ -33,16 +33,16 @@ db.sequelize.sync({ force: true })
   })
   .then(() => {
     db.producto.bulkCreate([
-      {nombre: "Naruto nº2", imagen:"narutoT2", descripcion: "Tomo nº 2", precio: 12, idCategory: 1},
-      {nombre: "Goku", imagen:"goku", descripcion: "Figura articulada", precio: 12, idCategory: 3},
-      {nombre: "Catan", imagen:"catan", descripcion: "Juego de 3 a 6 jugadores", precio: 12, idCategory: 4},
-      {nombre: "Naruto nº1", imagen:"narutoT1", descripcion: "Tomo nº 1", precio: 12, idCategory: 1},
-      {nombre: "Brazo", imagen:"brazo", descripcion: "Accesorio", precio: 12, idCategory: 3},
-      {nombre: "Sinchan", imagen:"sinchan", descripcion: "Comic a color", precio: 12, idCategory: 2},
-      {nombre: "Batman", imagen:"batman", descripcion: "Comic BatmanMan", precio: 12, idCategory: 2},
-      {nombre: "ManBat", imagen:"manbat", descripcion: "Comin ManBatman", precio: 12, idCategory: 2},
-      {nombre: "Risk", imagen:"risk", descripcion: "Juego de mesa bélico", precio: 12, idCategory: 4},
-      {nombre: "Han Solo", imagen:"hanSolo", descripcion: "Figura star wars", precio: 12, idCategory: 2}
+      {nombre: "Naruto nº2", imagen:"narutoT2", descripcion: "Tomo nº 2", precio: 12, cantidad:1, idCategory: 1},
+      {nombre: "Goku", imagen:"goku", descripcion: "Figura articulada", precio: 12, cantidad:1, idCategory: 3},
+      {nombre: "Catan", imagen:"catan", descripcion: "Juego de 3 a 6 jugadores", precio: 12, cantidad:1, idCategory: 4},
+      {nombre: "Naruto nº1", imagen:"narutoT1", descripcion: "Tomo nº 1", precio: 12, cantidad:1, idCategory: 1},
+      {nombre: "Brazo", imagen:"brazo", descripcion: "Accesorio", precio: 12, cantidad:1, idCategory: 3},
+      {nombre: "Sinchan", imagen:"sinchan", descripcion: "Comic a color", precio: 12, cantidad:1, idCategory: 2},
+      {nombre: "Batman", imagen:"batman", descripcion: "Comic BatmanMan", precio: 12, cantidad:1, idCategory: 2},
+      {nombre: "ManBat", imagen:"manbat", descripcion: "Comin ManBatman", precio: 12, cantidad:1, idCategory: 2},
+      {nombre: "Risk", imagen:"risk", descripcion: "Juego de mesa bélico", precio: 12, cantidad:1, idCategory: 4},
+      {nombre: "Han Solo", imagen:"hanSolo", descripcion: "Figura star wars", precio: 12, cantidad:1, idCategory: 2}
     ])
 
     console.log("Synced db.");

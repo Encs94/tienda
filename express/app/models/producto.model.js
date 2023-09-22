@@ -12,6 +12,9 @@ module.exports = (sequelize, Sequelize) => {
     precio: {
       type: Sequelize.INTEGER
     },
+    cantidad: {
+      type: Sequelize.INTEGER
+    },
     idCategory: {
       type: Sequelize.INTEGER
     }
