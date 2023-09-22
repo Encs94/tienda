@@ -12,6 +12,7 @@ function Carrito() {
   const [data, setData] = useState([]);
   const imagenes = require.context('./../assets', true);
   const navigate = useNavigate();
+  const [precioT, setPrecioT] = useState();
 
 
   const borrarProd = (id) => {
@@ -30,19 +31,18 @@ function Carrito() {
     axios.post(`http://localhost:8080/api/prodId`, pedido)
       .then(response => {
         setData(response.data);
+        // sacar precio primera vez
+        var temp = 0;
+        for(var i = 0;i < response.data.length; i++){
+          temp += response.data[i].precio;
+          
+        }
+        setPrecioT(temp)
       })
       .catch(error => {
         console.error('Error al obtener los datos:', error);
       });
   }, [pedido]);
-
-
-  // Precio total de los productos
-
-  let precioT = 0;
-  for(var i = 0; i < data.length; i++){
-    precioT += data[i].precio;
-  }
 
 
   const comprar = () => {
@@ -65,6 +65,23 @@ function Carrito() {
     console.log("pedidoString" + pedidoString)
   }
 
+
+  const cantidades = (id, cantidad) => {
+    var dataTemp = data;
+    var precioTemp = 0;
+    for(var i = 0;i < data.length ; i++){
+      if(data[i].id === id){
+        dataTemp[i].cantidad = cantidad;
+        setData(dataTemp)
+      }
+    }
+    // Refrecar precio
+    for(var i = 0; i < dataTemp.length; i++){
+      precioTemp += dataTemp[i].precio * dataTemp[i].cantidad
+    }
+    setPrecioT(precioTemp)
+  }
+
   
   return (
     <Inicio>
@@ -81,7 +98,7 @@ function Carrito() {
                 <div>
                   <span className='precioProducto'>{producto.precio}€</span>
                   <span>Cantidad</span>
-                  <select>
+                  <select onChange={(e) => cantidades(producto.id, e.target.value)}>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -105,7 +122,6 @@ function Carrito() {
           <span className='letra'>Productos {pedido.length}</span>
           <span  className='letra'>Total: {precioT}€</span>
           <button onClick={comprar}>Comprar</button>
-          {console.log(data)}
         </div>
         
       </div>
